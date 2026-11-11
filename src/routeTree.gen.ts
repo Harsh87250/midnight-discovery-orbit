@@ -10,33 +10,154 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BeyondTheStarsRouteImport } from './routes/beyond-the-stars'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as LetterRouteImport } from './routes/letter'
+import { Route as LittleThingsRouteImport } from './routes/little-things'
+import { Route as LittleUniverseRouteImport } from './routes/little-universe'
+import { Route as MusicRouteImport } from './routes/music'
+import { Route as RevealRouteImport } from './routes/reveal'
+import { Route as SurpriseRouteImport } from './routes/surprise'
+import { Route as UniverseRouteImport } from './routes/universe'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BeyondTheStarsRoute = BeyondTheStarsRouteImport.update({
+  id: '/beyond-the-stars',
+  path: '/beyond-the-stars',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LetterRoute = LetterRouteImport.update({
+  id: '/letter',
+  path: '/letter',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LittleThingsRoute = LittleThingsRouteImport.update({
+  id: '/little-things',
+  path: '/little-things',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LittleUniverseRoute = LittleUniverseRouteImport.update({
+  id: '/little-universe',
+  path: '/little-universe',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MusicRoute = MusicRouteImport.update({
+  id: '/music',
+  path: '/music',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RevealRoute = RevealRouteImport.update({
+  id: '/reveal',
+  path: '/reveal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SurpriseRoute = SurpriseRouteImport.update({
+  id: '/surprise',
+  path: '/surprise',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UniverseRoute = UniverseRouteImport.update({
+  id: '/universe',
+  path: '/universe',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/beyond-the-stars': typeof BeyondTheStarsRoute
+  '/gallery': typeof GalleryRoute
+  '/letter': typeof LetterRoute
+  '/little-things': typeof LittleThingsRoute
+  '/little-universe': typeof LittleUniverseRoute
+  '/music': typeof MusicRoute
+  '/reveal': typeof RevealRoute
+  '/surprise': typeof SurpriseRoute
+  '/universe': typeof UniverseRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/beyond-the-stars': typeof BeyondTheStarsRoute
+  '/gallery': typeof GalleryRoute
+  '/letter': typeof LetterRoute
+  '/little-things': typeof LittleThingsRoute
+  '/little-universe': typeof LittleUniverseRoute
+  '/music': typeof MusicRoute
+  '/reveal': typeof RevealRoute
+  '/surprise': typeof SurpriseRoute
+  '/universe': typeof UniverseRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/beyond-the-stars': typeof BeyondTheStarsRoute
+  '/gallery': typeof GalleryRoute
+  '/letter': typeof LetterRoute
+  '/little-things': typeof LittleThingsRoute
+  '/little-universe': typeof LittleUniverseRoute
+  '/music': typeof MusicRoute
+  '/reveal': typeof RevealRoute
+  '/surprise': typeof SurpriseRoute
+  '/universe': typeof UniverseRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/beyond-the-stars'
+    | '/gallery'
+    | '/letter'
+    | '/little-things'
+    | '/little-universe'
+    | '/music'
+    | '/reveal'
+    | '/surprise'
+    | '/universe'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/beyond-the-stars'
+    | '/gallery'
+    | '/letter'
+    | '/little-things'
+    | '/little-universe'
+    | '/music'
+    | '/reveal'
+    | '/surprise'
+    | '/universe'
+  id:
+    | '__root__'
+    | '/'
+    | '/beyond-the-stars'
+    | '/gallery'
+    | '/letter'
+    | '/little-things'
+    | '/little-universe'
+    | '/music'
+    | '/reveal'
+    | '/surprise'
+    | '/universe'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BeyondTheStarsRoute: typeof BeyondTheStarsRoute
+  GalleryRoute: typeof GalleryRoute
+  LetterRoute: typeof LetterRoute
+  LittleThingsRoute: typeof LittleThingsRoute
+  LittleUniverseRoute: typeof LittleUniverseRoute
+  MusicRoute: typeof MusicRoute
+  RevealRoute: typeof RevealRoute
+  SurpriseRoute: typeof SurpriseRoute
+  UniverseRoute: typeof UniverseRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +169,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/beyond-the-stars': {
+      id: '/beyond-the-stars'
+      path: '/beyond-the-stars'
+      fullPath: '/beyond-the-stars'
+      preLoaderRoute: typeof BeyondTheStarsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/letter': {
+      id: '/letter'
+      path: '/letter'
+      fullPath: '/letter'
+      preLoaderRoute: typeof LetterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/little-things': {
+      id: '/little-things'
+      path: '/little-things'
+      fullPath: '/little-things'
+      preLoaderRoute: typeof LittleThingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/little-universe': {
+      id: '/little-universe'
+      path: '/little-universe'
+      fullPath: '/little-universe'
+      preLoaderRoute: typeof LittleUniverseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/music': {
+      id: '/music'
+      path: '/music'
+      fullPath: '/music'
+      preLoaderRoute: typeof MusicRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reveal': {
+      id: '/reveal'
+      path: '/reveal'
+      fullPath: '/reveal'
+      preLoaderRoute: typeof RevealRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/surprise': {
+      id: '/surprise'
+      path: '/surprise'
+      fullPath: '/surprise'
+      preLoaderRoute: typeof SurpriseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/universe': {
+      id: '/universe'
+      path: '/universe'
+      fullPath: '/universe'
+      preLoaderRoute: typeof UniverseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BeyondTheStarsRoute: BeyondTheStarsRoute,
+  GalleryRoute: GalleryRoute,
+  LetterRoute: LetterRoute,
+  LittleThingsRoute: LittleThingsRoute,
+  LittleUniverseRoute: LittleUniverseRoute,
+  MusicRoute: MusicRoute,
+  RevealRoute: RevealRoute,
+  SurpriseRoute: SurpriseRoute,
+  UniverseRoute: UniverseRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

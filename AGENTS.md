@@ -28,3 +28,9 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Application architecture
+- Use dedicated TanStack content routes and the shared UniverseShell for discoveries; this keeps navigation and page metadata independent and consistent.
+- Keep public copy and the reveal clock in the browser-safe universe-content module; render identity only after its final-scene timing gates.
+- Use authorized external music playback links unless a real player is connected; decorative artwork must not imply active playback.
+- Keep semantic visual tokens and reusable layouts in src/styles.css; use the shared Button variants for controls.

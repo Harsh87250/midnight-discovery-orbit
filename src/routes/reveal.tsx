@@ -1,0 +1,17 @@
+import { useEffect, useState } from 'react';
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { ArrowLeft, Pause, Play, RotateCcw, Sparkles } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Starfield } from '@/components/universe-shell';
+import { pageHead, revealIdentity } from '@/lib/universe-content';
+import sky from '@/assets/midnight-universe.jpg';
+export const Route = createFileRoute('/reveal')({ head: () => pageHead('One Last Little Thing', 'Every universe has someone who makes it special. A final midnight surprise.'), component: Reveal });
+function Reveal() {
+ const [elapsed,setElapsed]=useState(0);const [paused,setPaused]=useState(false);const reduced=useReducedMotion();
+ useEffect(()=>{if(paused || elapsed>=24)return;const timer=window.setInterval(()=>setElapsed(v=>v+1),1000);return()=>window.clearInterval(timer);},[paused,elapsed]);
+ const identity=revealIdentity(elapsed);
+ const transition={duration:reduced?0:1.5};
+ const scene=elapsed<5?0:elapsed<9?1:elapsed<13?2:3;
+ return <div className="reveal-scene"><div className={`reveal-sky ${elapsed>=3?'visible':''}`}><img src={sky} alt="" /><Starfield /></div><Button asChild variant="ghost" className="reveal-back"><Link to="/universe" aria-label="Return to the universe"><ArrowLeft /> The universe</Link></Button><div className="reveal-controls"><Button variant="ghost" size="icon" onClick={()=>setPaused(!paused)} aria-label={paused?'Continue the reveal':'Pause the reveal'} title={paused?'Continue the reveal':'Pause the reveal'}>{paused?<Play />:<Pause />}</Button></div><div className="reveal-content"><motion.div className="reveal-first-star" animate={reduced?{}:{opacity:[.4,1,.4],scale:[.9,1.1,.9]}} transition={{duration:4,repeat:Infinity}}>✧</motion.div><AnimatePresence mode="wait">{scene===0?<motion.p key="quiet" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} transition={transition}>A little silence.<br />A little stardust.</motion.p>:scene===1?<motion.p key="special" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} transition={transition}>Every universe has someone<br />who makes it special... ✨</motion.p>:scene===2?<motion.p key="you" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} transition={transition}>This little universe<br />was made for you... 💙</motion.p>:<motion.div key="identity" initial={{opacity:0}} animate={{opacity:1}} transition={transition}><span className="eyebrow">THIS LITTLE UNIVERSE WAS MADE FOR YOU</span>{identity.name && <motion.h1 className="reveal-name" initial={{opacity:0,filter:'blur(12px)',y:15}} animate={{opacity:1,filter:'blur(0px)',y:0}} transition={{duration:reduced?0:2.5}}>✨ {identity.name}. ✨</motion.h1>}{identity.nickname && <motion.div initial={{opacity:0,y:12}} animate={{opacity:1,y:0}} transition={transition}><p className="nickname-intro">And to me, you'll always be my...</p><h2 className="reveal-nickname">🥹 {identity.nickname} 🦋</h2></motion.div>}{elapsed>=23 && <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={transition}><p className="final-wishes">Stay magical. Keep shining.<br />And never stop being you. 🌙</p><p className="final-small">With a little universe of good wishes, just for you. 💫</p><Button asChild variant="cosmic"><Link to="/"><RotateCcw /> REVISIT THE UNIVERSE <Sparkles /></Link></Button></motion.div>}</motion.div>}</AnimatePresence></div></div>;
+}

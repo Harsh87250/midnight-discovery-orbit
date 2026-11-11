@@ -1,0 +1,8 @@
+import { useState } from 'react';
+import { createFileRoute } from '@tanstack/react-router';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { ChapterHeading, UniverseShell } from '@/components/universe-shell';
+import { letter, pageHead } from '@/lib/universe-content';
+export const Route = createFileRoute('/letter')({ head: () => pageHead('A Letter for You', 'Some thoughtful words, sealed with a little stardust.'), component: Letter });
+function Letter() { const [open,setOpen] = useState(false); const reduced = useReducedMotion(); return <UniverseShell><div className="chapter-content"><ChapterHeading number="05" title="A Letter for You" subtitle="Some thoughts are better kept in a little envelope." /><div className="letter-area"><Button className={`envelope ${open ? 'is-open' : ''}`} variant="ghost" aria-label={open ? 'Close the letter' : 'Open the letter'} aria-expanded={open} onClick={() => setOpen(!open)}><span className="envelope-flap" /><span className="envelope-seal">✧</span></Button><AnimatePresence>{open && <motion.article className="letter-paper" initial={{ opacity: 0, y: 45 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: .8 }} aria-label="A personal letter">{letter.map((text,i) => <motion.p key={text} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: reduced ? 0 : i * .4, duration: .7 }}>{text}</motion.p>)}<span>🤍</span></motion.article>}</AnimatePresence>{open && <Button variant="ghost" onClick={() => setOpen(false)}>Seal it with stardust ✧</Button>}</div></div></UniverseShell>; }

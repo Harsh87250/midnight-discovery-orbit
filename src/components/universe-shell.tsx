@@ -14,6 +14,7 @@ export function UniverseShell({ children, immersive = false }: { children: React
   const [menu, setMenu] = useState(false);
   const location = useLocation();
   const current = chapters.findIndex(c => c.path === location.pathname);
+  const nextChapter = chapters[current + 1];
   const reduceMotion = useReducedMotion();
   return <div className={`universe-shell ${immersive ? 'immersive' : ''}`}>
     <div className="sky-background" aria-hidden="true"><img src={sky} alt="" width={1920} height={1088} /><div className="sky-shade" /></div>
@@ -25,7 +26,7 @@ export function UniverseShell({ children, immersive = false }: { children: React
     </header>
     {menu && <nav className="mobile-navigation" aria-label="Mobile navigation"><Link to="/universe" onClick={() => setMenu(false)}>The universe</Link><Link to="/gallery" onClick={() => setMenu(false)}>Little pieces</Link>{chapters.map(c => <Link key={c.path} to={c.path} onClick={() => setMenu(false)}>{c.symbol} {c.label}</Link>)}</nav>}
     <motion.main key={location.pathname} initial={reduceMotion ? false : { opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7 }}>{children}</motion.main>
-    {!immersive && <footer className="chapter-footer"><Button asChild variant="ghost"><Link to="/universe"><ArrowLeft /> The universe</Link></Button><div className="chapter-progress" aria-label={current >= 0 ? `Chapter ${current + 1} of 6` : 'Explore the universe'}>{chapters.map((c,i) => <Link to={c.path} key={c.path} className={current === i ? 'progress-active' : ''} aria-label={c.label} title={c.label}><span /></Link>)}</div>{current >= 0 && current < 5 ? <Button asChild variant="ghost"><Link to={chapters[current + 1].path}>Next discovery <ArrowRight /></Link></Button> : <Button asChild variant="ghost"><Link to="/reveal">One last little thing <Sparkles /></Link></Button>}</footer>}
+    {!immersive && <footer className="chapter-footer"><Button asChild variant="ghost"><Link to="/universe"><ArrowLeft /> The universe</Link></Button><div className="chapter-progress" aria-label={current >= 0 ? `Chapter ${current + 1} of 6` : 'Explore the universe'}>{chapters.map((c,i) => <Link to={c.path} key={c.path} className={current === i ? 'progress-active' : ''} aria-label={c.label} title={c.label}><span /></Link>)}</div>{current >= 0 && nextChapter ? <Button asChild variant="ghost"><Link to={nextChapter.path}>Next discovery <ArrowRight /></Link></Button> : <Button asChild variant="ghost"><Link to="/reveal">One last little thing <Sparkles /></Link></Button>}</footer>}
   </div>;
 }
 

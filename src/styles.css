@@ -59,4 +59,9 @@
 .constellation-star-4{left:62%;top:48%;}
 .constellation-star-5{left:77%;top:26%;}
 .constellation-star-6{left:91%;top:53%;}
-.constellation-star-7{left:52%;top:79%;}
+.constellation-star-7{left:52%;top:79%;}.immersive .sky-background{height:min(100svh,1000px)}
+.immersive .sky-background img{object-position:75% top}
+.reveal-constellation{position:absolute;left:10%;top:15%;width:80%;height:65%;color:var(--primary);pointer-events:none;opacity:.4}
+.reveal-constellation line{stroke:currentColor;stroke-width:.3}
+.reveal-constellation circle{fill:var(--silver)}
+@media(max-width:600px){.opening{padding-top:70px;min-height:530px}.opening h1{font-size:48px}.opening-divider{margin-top:32px}.opening .subtitle{margin-top:22px}.opening .supporting{margin-bottom:25px}.opening-note{margin-top:14px}.preview-discoveries{padding-top:15px}}

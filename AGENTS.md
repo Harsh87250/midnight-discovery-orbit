@@ -34,3 +34,4 @@ use the editor.
 - Keep public copy and the reveal clock in the browser-safe universe-content module; render identity only after its final-scene timing gates.
 - Use authorized external music playback links unless a real player is connected; decorative artwork must not imply active playback.
 - Keep semantic visual tokens and reusable layouts in src/styles.css; use the shared Button variants for controls.
+- Keep ambient effects and blooming-flower interactions in the shared universe-magic module; use bounded CSS particles, transform-only parallax, and reduced-motion fallbacks to keep animation lightweight.

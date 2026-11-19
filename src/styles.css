@@ -182,3 +182,65 @@
 }
 @media(max-height:500px){.opening{padding-top:43px}.opening-divider svg{display:none}.opening-divider{margin-top:10px}.preview-discoveries{padding-top:8px}.opening .subtitle{margin-top:8px}.opening h1{font-size:34px}}
 @media(max-width:600px){.reveal-name{font-size:52px;white-space:nowrap}.reveal-content{width:100%;min-width:0}}
+
+/* Cinematic finishing: translucent wings, independent flights, and quiet depth. */
+:root{
+ --wing-edge:oklch(.3 .08 267 / .8);
+ --wing-sheen:oklch(.95 .04 249 / .85);
+ --gallery-scrim:oklch(.1 .025 260 / .92);
+ --ray-light:oklch(.86 .06 255 / .045);
+ --floating-surface:oklch(.18 .035 264 / .9);
+ --cinematic-vignette:linear-gradient(180deg,var(--background),transparent 65%);
+}
+.butterfly-flight-layer{position:fixed;inset:0;z-index:25;pointer-events:none;overflow:hidden;contain:layout paint}
+.butterfly-flight-layer .magic-butterfly{left:0;top:0;width:48px;height:36px;animation:none;opacity:0;filter:drop-shadow(0 0 5px var(--lavender));will-change:transform;perspective:180px}
+.butterfly-flight-layer .butterfly-1,.butterfly-flight-layer .butterfly-4{color:var(--primary)}
+.butterfly-flight-layer .butterfly-3{color:var(--silver)}
+.butterfly-hover{display:block;width:100%;height:100%;animation:butterfly-bob 2.7s ease-in-out infinite alternate}
+.butterfly-1 .butterfly-hover{animation-delay:-1.4s}.butterfly-2 .butterfly-hover{animation-duration:3.4s}
+.butterfly-wing{transform-box:view-box;stroke:var(--wing-edge);stroke-width:.65;fill-opacity:.8}
+.left-wing,.right-wing{transform-origin:30px 23px;animation:living-wing-beat .24s ease-in-out infinite alternate}
+.butterfly-1 .butterfly-wing{animation-duration:.29s}.butterfly-2 .butterfly-wing{animation-duration:.21s}.butterfly-3 .butterfly-wing{animation-duration:.32s}.butterfly-4 .butterfly-wing{animation-duration:.26s}
+.wing-veins{fill:none;stroke:var(--wing-edge);stroke-width:.5}.wing-speckles{fill:none;stroke:var(--wing-sheen);stroke-width:2;stroke-linecap:round}
+.is-landed .butterfly-wing{animation-duration:1.3s}.is-landed .butterfly-hover{animation:none}
+.moonlight-rays{position:absolute;inset:0;background:repeating-conic-gradient(from 155deg at 76% -10%,transparent 0deg 12deg,var(--ray-light) 13deg 17deg,transparent 18deg 30deg);opacity:.6;animation:ray-drift 30s ease-in-out infinite alternate;transform-origin:top right}
+.opening:before{content:'';position:absolute;inset:-100px -25vw 0;background:var(--cinematic-vignette);pointer-events:none;animation:intro-veil 2.4s ease-out forwards;z-index:2}
+.entry-spark{animation:entry-turn 1.2s linear infinite}
+.floating-music{position:fixed;right:24px;bottom:24px;z-index:35;width:44px;height:44px;border-radius:50%;background:var(--floating-surface);backdrop-filter:blur(12px);box-shadow:var(--glow);color:var(--silver);transition:transform .3s,box-shadow .3s}
+.floating-music:hover{transform:translateY(-3px);box-shadow:var(--interaction-glow)}
+.midnight-player{margin-top:22px;min-height:44px;width:100%}.midnight-player iframe{border:0;border-radius:8px;display:block}
+.universe-grid>div{min-width:0}.universe-grid>div>.celestial-button{width:100%}
+.garden-flowers{position:relative;z-index:1}.flower-1 svg{animation-delay:-3s}.flower-2 svg{animation-delay:-5s;animation-duration:9s}
+.garden-flower.bloomed{filter:drop-shadow(0 0 10px var(--lavender))}
+.garden-petals{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.garden-petal{position:absolute;left:28%;top:28%;width:7px;height:12px;border-radius:80% 0 80% 0;background:var(--petal-fill);opacity:0;animation:garden-petal-fall 13s ease-in-out infinite}
+.garden-petal-1{left:48%;animation-delay:-4s}.garden-petal-2{left:66%;animation-delay:-9s}.garden-petal-3{left:40%;animation-delay:-6s}
+.gallery-image-frame{overflow:hidden;border-radius:6px;width:100%;height:240px}.gallery-grid>div:nth-child(3n+2) .gallery-image-frame{height:310px}
+.gallery-grid .gallery-image-frame img{height:100%;width:100%;transition:transform .8s ease,filter .6s ease}
+.gallery-item:hover .gallery-image-frame img{transform:scale(1.045);filter:brightness(1.08)}
+.gallery-overlay{position:fixed;inset:0;z-index:100;background:var(--gallery-scrim);backdrop-filter:blur(18px);animation:star-emerge .3s ease-out}
+.cinematic-lightbox{z-index:101;background:transparent;padding:70px 70px 40px;gap:20px;outline:none;animation:star-emerge .3s ease-out}
+.lightbox-toolbar{position:absolute;top:20px;right:24px;display:flex;align-items:center;gap:12px}.lightbox-count{font-size:10px;color:var(--muted-foreground);margin-right:10px}
+.cinematic-lightbox figure{width:min(900px,100%);min-width:0}.lightbox-image-stage{height:72svh;display:grid;place-items:center;overflow:hidden;border-radius:6px;touch-action:pan-y}
+.lightbox-image-stage.is-zoomed{overflow:auto;display:block;touch-action:pan-x pan-y}
+.lightbox-image{width:100%;height:100%;display:grid;place-items:center;transform-origin:center}
+.cinematic-lightbox img{width:auto;max-width:100%;height:auto;max-height:100%;object-fit:contain}
+.cinematic-lightbox figcaption{margin-top:18px}.cinematic-lightbox figcaption h2{font-size:27px}.cinematic-lightbox figcaption small{font-family:var(--font-sans);font-size:8px;color:var(--muted-foreground);display:block;margin-top:8px}
+.lightbox-prev,.lightbox-next{flex-shrink:0;width:44px;height:44px;border:1px solid var(--border);border-radius:50%;background:var(--glass)}
+@keyframes living-wing-beat{from{transform:scaleX(.2) rotateY(55deg)}to{transform:scaleX(1) rotateY(-8deg)}}
+@keyframes butterfly-bob{from{transform:translateY(-2px) rotate(-3deg)}to{transform:translateY(3px) rotate(3deg)}}
+@keyframes ray-drift{from{transform:rotate(-3deg);opacity:.35}to{transform:rotate(3deg);opacity:.7}}
+@keyframes garden-petal-fall{0%,30%{opacity:0;transform:translate3d(0,0,0) rotate(0)}35%,80%{opacity:.5}100%{opacity:0;transform:translate3d(50px,160px,0) rotate(230deg)}}
+@keyframes intro-veil{from{opacity:1}to{opacity:0;visibility:hidden}}
+@keyframes entry-turn{to{transform:rotate(180deg)}}
+@media(max-width:600px){
+ .butterfly-flight-layer .butterfly-2{display:block}.butterfly-flight-layer .butterfly-3,.butterfly-flight-layer .butterfly-4{display:none}
+ .butterfly-flight-layer .magic-butterfly{width:38px;height:29px}.moonlight-rays{animation:none}
+ .floating-music{right:15px;bottom:15px}.chapter-footer{padding-bottom:78px}.bottom-whisper{padding-bottom:80px}
+ .gallery-image-frame{height:180px}.gallery-grid>div:nth-child(3n+2) .gallery-image-frame{height:210px}
+ .cinematic-lightbox{padding:70px 12px 90px;gap:0}.lightbox-image-stage{height:65svh}
+ .cinematic-lightbox .lightbox-prev,.cinematic-lightbox .lightbox-next{position:absolute;bottom:24px;width:44px;height:44px}.lightbox-prev{left:calc(50% - 56px)}.lightbox-next{right:calc(50% - 56px)}
+ .lightbox-toolbar{top:15px;right:15px}.cinematic-lightbox figcaption h2{font-size:24px}
+}
+@media(min-width:601px) and (min-height:1400px){.opening{padding-top:220px;padding-bottom:50px}.opening-moon{top:70px}.preview-discoveries{padding-top:50px}}
+@media(prefers-reduced-motion:reduce){.butterfly-flight-layer,.garden-petals{display:none}.opening:before{display:none}.gallery-image-frame img{transform:none!important}.moonlight-rays{transform:none}.entry-spark{animation:none}}

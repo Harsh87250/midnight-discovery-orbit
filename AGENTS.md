@@ -34,4 +34,6 @@ use the editor.
 - Keep public copy and the reveal clock in the browser-safe universe-content module; render identity only after its final-scene timing gates.
 - Use authorized external music playback links unless a real player is connected; decorative artwork must not imply active playback.
 - Keep semantic visual tokens and reusable layouts in src/styles.css; use the shared Button variants for controls.
-- Keep ambient effects and blooming-flower interactions in the shared universe-magic module; use bounded CSS particles, transform-only parallax, and reduced-motion fallbacks to keep animation lightweight.
+- Keep ambient effects and blooming-flower interactions in universe-magic; bounded Web Animations flights use viewport-visible flower targets, cancel on unmount, pause while hidden, and respect reduced motion to avoid animation loops and layout work every frame.
+- Use Radix dialogs for gallery viewing with keyboard/touch navigation, zoom, and focus restoration so full-screen browsing stays accessible.
+- Load the official Spotify embed only after a user requests it; let Spotify own actual playback and visual feedback instead of simulating playback state.

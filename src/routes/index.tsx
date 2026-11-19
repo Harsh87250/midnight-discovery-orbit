@@ -25,7 +25,7 @@ function Index() {
       <motion.h1 initial={reduced ? false : { opacity: 0, y: 20, filter: 'blur(8px)' }} animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }} transition={{ delay: .45, duration: 1.5 }}>Somewhere Between<br /><em>Dreams & Stars</em></motion.h1>
       <motion.p className="subtitle" initial={reduced ? false : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 1.2 }}>“Not every beautiful story needs a name.”</motion.p>
       <motion.div initial={reduced ? false : { opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.3, duration: .9 }}><p className="supporting">A little universe is waiting...</p>
-      <Button variant="cosmic" onClick={enter} disabled={entering}><Sparkles size={14} /> ENTER THE UNKNOWN <ArrowRight size={14} /></Button>
+      <Button variant="cosmic" onClick={enter} disabled={entering}><Sparkles size={14} className={entering ? 'entry-spark' : ''} /> {entering ? 'OPENING THE UNIVERSE' : 'ENTER THE UNKNOWN'} <ArrowRight size={14} /></Button>
       <p className="opening-note">no rush. just a little wonder.</p></motion.div>
       <span className="orbit-decoration" aria-hidden="true">✧</span><span className="orbit-decoration right" aria-hidden="true">✦</span>
       <div className="opening-divider"><span>SOMETHING BEAUTIFUL LIES AHEAD</span><ArrowDown strokeWidth={1} /></div>

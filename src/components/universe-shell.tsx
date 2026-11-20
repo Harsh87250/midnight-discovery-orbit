@@ -5,7 +5,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { chapters } from '@/lib/universe-content';
 import sky from '@/assets/midnight-universe.jpg';
-import { CursorStardust, MagicAtmosphere } from '@/components/universe-magic';
+import { ButterflyFlight, CursorStardust, MagicAtmosphere } from '@/components/universe-magic';
 
 export function Starfield() {
   return <div className="starfield" aria-hidden="true">{Array.from({ length: 35 }, (_, i) => <i key={i} className={`star star-${i}`} />)}<span className="shooting-star" /></div>;
@@ -19,7 +19,7 @@ export function UniverseShell({ children, immersive = false }: { children: React
   const reduceMotion = useReducedMotion();
   return <div className={`universe-shell ${immersive ? 'immersive' : ''}`}>
     <div className="sky-background" aria-hidden="true"><img src={sky} alt="" width={1920} height={1088} /><div className="sky-shade" /></div>
-    <Starfield /><MagicAtmosphere /><CursorStardust />
+    <Starfield /><MagicAtmosphere /><ButterflyFlight /><CursorStardust />
     <header className="site-header">
       <Link to="/" className="wordmark" aria-label="Somewhere Between Dreams and Stars home"><Moon size={22} strokeWidth={1.2} /><span>somewhere<span className="wordmark-sub">BETWEEN DREAMS & STARS</span></span></Link>
       <nav className="desktop-nav" aria-label="Main navigation"><Link to="/universe" activeProps={{ className: 'nav-active' }}>The universe</Link><Link to="/gallery" activeProps={{ className: 'nav-active' }}>Little pieces</Link><Link to="/letter" activeProps={{ className: 'nav-active' }}>A letter for you</Link></nav>

@@ -170,7 +170,7 @@
 @media(max-width:900px){.opening h1{font-size:68px}}
 @media(max-width:600px){
  .opening{padding:117px 18px 20px;min-height:0}.opening-moon{top:12px;transform:scale(.8)}.opening h1{font-size:46px;line-height:1.1;margin-top:22px}.opening .eyebrow{letter-spacing:0}.opening .subtitle{font-size:20px;margin-top:18px}.opening-divider{margin-top:25px;gap:10px;font-size:7px;letter-spacing:0}.opening-divider:before{height:20px}.opening .supporting{margin:12px 0 22px}.opening-note{margin-top:12px}
- .magic-butterfly{width:30px}.butterfly-2,.particle:nth-child(n+7){display:none}.sky-aurora{animation:none}.near-stars{animation-duration:120s}.cursor-stardust{display:none}
+ .magic-butterfly{width:30px}.particle:nth-child(n+7){display:none}.sky-aurora{animation:none}.near-stars{animation-duration:120s}.cursor-stardust{display:none}
  .garden-flowers{gap:15px}.garden-flower{width:85px;height:145px}.flower-1{width:75px;height:125px}.garden-message blockquote{font-size:24px}.garden-message{min-height:120px}
  .gallery-grid>div:nth-child(3n+2) img{height:210px}.record-art{width:80%;margin:auto;padding:15px}.record-art .vinyl{width:100%}
  .reveal-name{font-size:66px}.reveal-nickname{font-size:36px;overflow-wrap:anywhere}.reveal-content .eyebrow{line-height:1.8}.reveal-content .final-small{line-height:1.9}.reveal-content .cosmic-button{max-width:100%;white-space:normal;font-size:8px;padding:0 15px;letter-spacing:0}
@@ -178,7 +178,7 @@
 @media(max-height:700px){.site-header{height:72px}.opening{padding-top:70px}.opening-moon{top:0;width:55px;height:55px;left:calc(50% - 28px)}.opening-moon span{width:50px;height:50px;box-shadow:inset 13px -7px 0 var(--silver)}.opening h1{font-size:52px;margin-top:14px}.opening .subtitle{margin-top:14px;font-size:20px}.opening .supporting{margin:10px 0 18px}.opening-divider{margin-top:20px}.opening-divider:before{height:15px}.opening-note{margin-top:10px}.reveal-scene{padding-top:100px;padding-bottom:40px}}
 @media(max-height:500px){.opening{padding-top:52px;padding-bottom:16px}.opening h1{font-size:36px;line-height:1.02;margin-top:9px}.opening-moon{top:0}.opening .subtitle{font-size:17px;margin-top:10px}.opening .supporting{margin:6px 0 12px;font-size:9px}.opening-note{margin-top:8px}.opening-divider{margin-top:14px;gap:6px}.opening-divider:before{display:none}.opening .cosmic-button{height:38px}.site-header{height:60px}.preview-discoveries{padding-top:12px}.opening .eyebrow{font-size:7px;letter-spacing:0}}
 @media(prefers-reduced-motion:reduce){
- .magic-butterfly,.floating-particles,.petal-shower,.cursor-stardust{display:none}.star,.reveal-scene>.magic-atmosphere{opacity:1}.opening-moon{opacity:1;filter:none}.near-stars{transform:none}.constellation line{stroke-dashoffset:0}.distant-stars{will-change:auto}
+ .magic-butterfly,.floating-particles,.petal-shower,.cursor-stardust,.drifting-petals{display:none}.star,.reveal-scene>.magic-atmosphere{opacity:1}.opening-moon{opacity:1;filter:none}.near-stars{transform:none}.constellation line{stroke-dashoffset:0}.distant-stars{will-change:auto}
 }
 @media(max-height:500px){.opening{padding-top:43px}.opening-divider svg{display:none}.opening-divider{margin-top:10px}.preview-discoveries{padding-top:8px}.opening .subtitle{margin-top:8px}.opening h1{font-size:34px}}
 @media(max-width:600px){.reveal-name{font-size:52px;white-space:nowrap}.reveal-content{width:100%;min-width:0}}
@@ -193,11 +193,12 @@
  --cinematic-vignette:linear-gradient(180deg,var(--background),transparent 65%);
 }
 .butterfly-flight-layer{position:fixed;inset:0;z-index:25;pointer-events:none;overflow:hidden;contain:layout paint}
-.butterfly-flight-layer .magic-butterfly{left:0;top:0;width:48px;height:36px;animation:none;opacity:0;filter:drop-shadow(0 0 5px var(--lavender));will-change:transform;perspective:180px}
-.butterfly-flight-layer .butterfly-1,.butterfly-flight-layer .butterfly-4{color:var(--primary)}
-.butterfly-flight-layer .butterfly-3{color:var(--silver)}
+.butterfly-trail-canvas{position:absolute;inset:0;width:100%;height:100%;mix-blend-mode:screen}
+.butterfly-flight-layer .magic-butterfly{left:0;top:0;width:48px;height:36px;animation:none;opacity:0;will-change:transform,opacity;perspective:180px}
+.butterfly-flight-layer .bf-soft{mix-blend-mode:screen}
 .butterfly-hover{display:block;width:100%;height:100%;animation:butterfly-bob 2.7s ease-in-out infinite alternate}
 .butterfly-1 .butterfly-hover{animation-delay:-1.4s}.butterfly-2 .butterfly-hover{animation-duration:3.4s}
+.is-startled .butterfly-wing{animation-duration:.13s}
 .butterfly-wing{transform-box:view-box;stroke:var(--wing-edge);stroke-width:.65;fill-opacity:.8}
 .left-wing,.right-wing{transform-origin:30px 23px;animation:living-wing-beat .24s ease-in-out infinite alternate}
 .butterfly-1 .butterfly-wing{animation-duration:.29s}.butterfly-2 .butterfly-wing{animation-duration:.21s}.butterfly-3 .butterfly-wing{animation-duration:.32s}.butterfly-4 .butterfly-wing{animation-duration:.26s}
@@ -227,6 +228,10 @@
 .cinematic-lightbox img{width:auto;max-width:100%;height:auto;max-height:100%;object-fit:contain}
 .cinematic-lightbox figcaption{margin-top:18px}.cinematic-lightbox figcaption h2{font-size:27px}.cinematic-lightbox figcaption small{font-family:var(--font-sans);font-size:8px;color:var(--muted-foreground);display:block;margin-top:8px}
 .lightbox-prev,.lightbox-next{flex-shrink:0;width:44px;height:44px;border:1px solid var(--border);border-radius:50%;background:var(--glass)}
+.drifting-petals{position:absolute;inset:0}
+.drift-petal{position:absolute;top:-4%;width:8px;height:13px;border-radius:80% 0 80% 0;background:var(--petal-fill);opacity:0;animation:drift-petal-fall 26s linear infinite}
+.drift-petal-0{left:8%;animation-delay:-4s}.drift-petal-1{left:22%;animation-delay:-14s;animation-duration:31s}.drift-petal-2{left:37%;animation-delay:-8s}.drift-petal-3{left:52%;animation-delay:-20s;animation-duration:29s}.drift-petal-4{left:66%;animation-delay:-2s}.drift-petal-5{left:78%;animation-delay:-11s;animation-duration:33s}.drift-petal-6{left:88%;animation-delay:-17s}.drift-petal-7{left:95%;animation-delay:-7s;animation-duration:28s}
+@keyframes drift-petal-fall{0%{opacity:0;transform:translate3d(0,-4vh,0) rotate(0)}8%,75%{opacity:.4}100%{opacity:0;transform:translate3d(9vw,108vh,0) rotate(300deg)}}
 @keyframes living-wing-beat{from{transform:scaleX(.2) rotateY(55deg)}to{transform:scaleX(1) rotateY(-8deg)}}
 @keyframes butterfly-bob{from{transform:translateY(-2px) rotate(-3deg)}to{transform:translateY(3px) rotate(3deg)}}
 @keyframes ray-drift{from{transform:rotate(-3deg);opacity:.35}to{transform:rotate(3deg);opacity:.7}}
@@ -234,7 +239,7 @@
 @keyframes intro-veil{from{opacity:1}to{opacity:0;visibility:hidden}}
 @keyframes entry-turn{to{transform:rotate(180deg)}}
 @media(max-width:600px){
- .butterfly-flight-layer .butterfly-2{display:block}.butterfly-flight-layer .butterfly-3,.butterfly-flight-layer .butterfly-4{display:none}
+ .butterfly-flight-layer .butterfly-2{display:block}.butterfly-flight-layer .butterfly-5,.butterfly-flight-layer .butterfly-6,.butterfly-flight-layer .butterfly-7,.butterfly-flight-layer .butterfly-8,.butterfly-flight-layer .butterfly-9,.butterfly-flight-layer .butterfly-10{display:none}
  .butterfly-flight-layer .magic-butterfly{width:38px;height:29px}.moonlight-rays{animation:none}
  .floating-music{right:15px;bottom:15px}.chapter-footer{padding-bottom:78px}.bottom-whisper{padding-bottom:80px}
  .gallery-image-frame{height:180px}.gallery-grid>div:nth-child(3n+2) .gallery-image-frame{height:210px}
@@ -243,4 +248,4 @@
  .lightbox-toolbar{top:15px;right:15px}.cinematic-lightbox figcaption h2{font-size:24px}
 }
 @media(min-width:601px) and (min-height:1400px){.opening{padding-top:220px;padding-bottom:50px}.opening-moon{top:70px}.preview-discoveries{padding-top:50px}}
-@media(prefers-reduced-motion:reduce){.butterfly-flight-layer,.garden-petals{display:none}.opening:before{display:none}.gallery-image-frame img{transform:none!important}.moonlight-rays{transform:none}.entry-spark{animation:none}}
+@media(prefers-reduced-motion:reduce){.butterfly-flight-layer,.garden-petals,.drifting-petals{display:none}.opening:before{display:none}.gallery-image-frame img{transform:none!important}.moonlight-rays{transform:none}.entry-spark{animation:none}}
